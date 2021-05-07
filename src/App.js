@@ -1,5 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
+import { Button, makeStyles } from '@material-ui/core';
 import { useState } from 'react';
 import Header from './components/Header';
 import SimpleBarChart from './components/graphs/SimpleBarChart';
@@ -13,7 +12,6 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
-        padding: '0 30px',
         backgroundColor: '#040404'
     },
     button: {
@@ -34,11 +32,11 @@ function App() {
     const [graph, setGraph] = useState(0);
     const graphs = [<SimpleAreaChart data={AreaChartData}/>, <SimpleBarChart data={BarChartData}/>];
     const items = [
-        'PPE',
+        'Cases vs Vaccines',
         'PPE'
     ]
     const descriptions = [
-        'This is a description for the line chart, please review the data below.',
+        'The COVID Vaccines administered vs. COVID Cases, per day, since January 2021 in Canada.',
         'This is a description for the bar chart, please review the data below.'
     ];
 
