@@ -1,6 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Typography } from '@material-ui/core';
-import SimpleLineChart from './components/SimpleLineChart';
+import { useState } from 'react';
+import Header from './components/Header';
+import SimpleBarChart from './components/graphs/SimpleBarChart';
+import SimpleLineChart from './components/graphs/SimpleLineChart';
 
 const useStyles = makeStyles({
     root: {
@@ -9,22 +12,6 @@ const useStyles = makeStyles({
         height: '100vh',
         padding: '0 30px',
         backgroundColor: '#040404'
-    },
-    header: {
-        height: '100px',
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    title: {
-        color: 'white',
-        fontSize: '24px',
-        paddingRight: '5px'
-    },
-    item: {
-        color: '#8884d8',
-        fontSize: '24px'
     },
     button: {
         color: 'white',
@@ -41,17 +28,29 @@ const useStyles = makeStyles({
 
 function App() {
     const classes = useStyles();
+    const [graph, setGraph] = useState(0);
+    const graphs = [<SimpleLineChart />, <SimpleBarChart />];
+    const descriptions = [];
+
+    function next() {
+        if (graph < graphs.length - 1) {
+            setGraph(graph + 1);
+        }
+    }
+
+    function prev() {
+        if (graph > 0) {
+            setGraph(graph - 1);
+        }
+    }
 
     return (
         <div className={classes.root}>
-            <div className={classes.header}>
-                <Typography className={classes.title}>Covid Insights -</Typography>
-                <Typography className={classes.item}>PPE</Typography>
-            </div>
-            <SimpleLineChart />
+            <Header />
+            {graphs[graph]}
             <div className={classes.buttons}>
-                <Button className={classes.button}>Prev</Button>
-                <Button className={classes.button}>Next</Button>
+                <Button className={classes.button} onClick={prev}>Prev</Button>
+                <Button className={classes.button} onClick={next}>Next</Button>
             </div>
         </div>
     );
