@@ -3,10 +3,14 @@ import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
     header: {
-        height: '100px',
+        minHeight: '100px',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    title: {
+        display: 'flex'
     },
     name: {
         color: 'white',
@@ -14,8 +18,12 @@ const useStyles = makeStyles({
         paddingRight: '5px'
     },
     item: {
-        color: '#8884d8',
+        color: '#006064',
         fontSize: '24px'
+    },
+    description: {
+        color: '#dcdcdc',
+        fontSize: '20px',
     }
 });
 
@@ -25,10 +33,10 @@ function Header(props) {
     return (
         <div className={classes.header}>
             <div className={classes.title}>
-            <Typography className={classes.name}>Covid Insights -</Typography>
-            <Typography className={classes.item}>PPE</Typography>
+                <Typography className={classes.name}>Covid Insights -</Typography>
+                <Typography className={classes.item}>{props.item}</Typography>
             </div>
-            
+            <Typography className={classes.description}>{props.description}</Typography>
         </div>
     );
 }

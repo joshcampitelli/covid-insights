@@ -1,9 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Typography } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { useState } from 'react';
 import Header from './components/Header';
 import SimpleBarChart from './components/graphs/SimpleBarChart';
-import SimpleLineChart from './components/graphs/SimpleLineChart';
+import SimpleAreaChart from './components/graphs/SimpleAreaChart';
+
+import AreaChartData from './test-data/areaChart';
+import BarChartData from './test-data/barChart';
 
 const useStyles = makeStyles({
     root: {
@@ -15,7 +18,7 @@ const useStyles = makeStyles({
     },
     button: {
         color: 'white',
-        backgroundColor: '#8884d8',
+        backgroundColor: '#006064',
         margin: '10px'
     },
     buttons: {
@@ -29,8 +32,15 @@ const useStyles = makeStyles({
 function App() {
     const classes = useStyles();
     const [graph, setGraph] = useState(0);
-    const graphs = [<SimpleLineChart />, <SimpleBarChart />];
-    const descriptions = [];
+    const graphs = [<SimpleAreaChart data={AreaChartData}/>, <SimpleBarChart data={BarChartData}/>];
+    const items = [
+        'PPE',
+        'PPE'
+    ]
+    const descriptions = [
+        'This is a description for the line chart, please review the data below.',
+        'This is a description for the bar chart, please review the data below.'
+    ];
 
     function next() {
         if (graph < graphs.length - 1) {
@@ -46,7 +56,7 @@ function App() {
 
     return (
         <div className={classes.root}>
-            <Header />
+            <Header item={items[graph]} description={descriptions[graph]} />
             {graphs[graph]}
             <div className={classes.buttons}>
                 <Button className={classes.button} onClick={prev}>Prev</Button>
