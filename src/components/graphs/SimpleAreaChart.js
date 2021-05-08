@@ -9,6 +9,10 @@ const useStyles = makeStyles({
     }
 });
 
+/**
+ * SimpleAreaChart Component displays the ReChart AreaChart with Covid Vaccinations vs Cases.
+ * @param props destructured into { data }, for the array of json data that the chart displays.  
+ */
 const SimpleAreaChart = ({ data }) => {
     const classes = useStyles();
 

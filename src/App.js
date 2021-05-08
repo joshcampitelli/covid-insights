@@ -48,6 +48,7 @@ function App() {
     }, []);
 
     async function getData() {
+        // Fetch graph data from AWS Lambda, sample data shown in ./test-data/api-data.json
         try {
             let results = await fetch(url,  {
                 method: 'GET'
