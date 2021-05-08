@@ -56,7 +56,7 @@ function App() {
             let result = await results.json();
 
             setAreaChartData(result.body['area-chart']);
-            setBarChartData(result.body['bar-chart'])
+            setBarChartData(result.body['bar-chart']);
         } catch (error) {
             console.log(error);
         }
