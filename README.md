@@ -1,7 +1,8 @@
 # Description
 
-This project was created for the Kinaxis Full-Stack devleper challenge. The application is a data visualization tool for some interesting COVID facts.
-
+This project was created for the Kinaxis Full-Stack devleper take home project. The application is a data visualization tool for some interesting COVID facts.
+    
+* The data under `test-data/api-data.json` is an example of the data & format returned by the AWS Lambda
 ## Project Setup
 
 Run the following commands in the project directory:

@@ -1,7 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { makeStyles, Typography, useMediaQuery } from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(() => ({
     header: {
         minHeight: '100px',
         display: 'flex',
@@ -9,8 +8,17 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    title: {
-        display: 'flex'
+    title: props => {
+        const css = {
+            display: 'flex',
+            alignItems: 'center'
+        }
+
+        if (!props.isDesktop) {
+            css.flexDirection = 'column';
+        }
+
+        return css;
     },
     name: {
         color: 'white',
@@ -21,19 +29,29 @@ const useStyles = makeStyles({
         color: '#006064',
         fontSize: '24px'
     },
-    description: {
-        color: '#dcdcdc',
-        fontSize: '20px',
+    description: props => {
+        const css = {
+            color: '#dcdcdc',
+            fontSize: '20px',
+        }
+
+        if (!props.isDesktop) {
+            css.padding = '0 10px 10px 10px';
+            css.fontSize = '16px';
+        }
+        
+        return css;
     }
-});
+}));
 
 function Header(props) {
-    const classes = useStyles();
+    const isDesktop = useMediaQuery('(min-width:600px)');
+    const classes = useStyles({ ...props, isDesktop });
 
     return (
         <div className={classes.header}>
             <div className={classes.title}>
-                <Typography className={classes.name}>Covid Insights -</Typography>
+                <Typography className={classes.name}>Covid Insights:</Typography>
                 <Typography className={classes.item}>{props.item}</Typography>
             </div>
             <Typography className={classes.description}>{props.description}</Typography>
