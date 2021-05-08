@@ -1,11 +1,11 @@
 import { Button, makeStyles } from '@material-ui/core';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import fetch from 'node-fetch';
 import Header from './components/Header';
 import SimpleBarChart from './components/graphs/SimpleBarChart';
 import SimpleAreaChart from './components/graphs/SimpleAreaChart';
 
-import AreaChartData from './test-data/areaChart';
-import BarChartData from './test-data/barChart';
+const url = 'https://ltwoi9ffmb.execute-api.us-east-2.amazonaws.com/prod';
 
 const useStyles = makeStyles({
     root: {
@@ -23,22 +23,44 @@ const useStyles = makeStyles({
         display: 'flex',
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     }
 });
 
 function App() {
     const classes = useStyles();
     const [graph, setGraph] = useState(0);
-    const graphs = [<SimpleAreaChart data={AreaChartData}/>, <SimpleBarChart data={BarChartData}/>];
+    const [areaChartData, setAreaChartData] = useState([]);
+    const [barChartData, setBarChartData] = useState([]);
+
+    const graphs = [<SimpleAreaChart data={areaChartData} />, <SimpleBarChart data={barChartData} />];
     const items = [
         'Cases vs Vaccines',
-        'PPE'
+        'PPE Supply vs Demand'
     ]
     const descriptions = [
         'The COVID Vaccines administered vs. COVID Cases, per day, since January 2021 in Canada.',
         'This is a description for the bar chart, please review the data below.'
     ];
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    async function getData() {
+        try {
+            let results = await fetch(url,  {
+                method: 'GET'
+            });
+
+            let result = await results.json();
+
+            setAreaChartData(result.body['area-chart']);
+            setBarChartData(result.body['bar-chart'])
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     function next() {
         if (graph < graphs.length - 1) {
