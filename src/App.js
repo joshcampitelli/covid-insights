@@ -2,7 +2,7 @@ import { Button, makeStyles } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import fetch from 'node-fetch';
 import Header from './components/Header';
-import SimpleBarChart from './components/graphs/SimpleBarChart';
+import SimpleLineChart from './components/graphs/SimpleLineChart';
 import SimpleAreaChart from './components/graphs/SimpleAreaChart';
 
 const url = 'https://ltwoi9ffmb.execute-api.us-east-2.amazonaws.com/prod';
@@ -33,14 +33,14 @@ function App() {
     const [areaChartData, setAreaChartData] = useState([]);
     const [barChartData, setBarChartData] = useState([]);
 
-    const graphs = [<SimpleAreaChart data={areaChartData} />, <SimpleBarChart data={barChartData} />];
+    const graphs = [<SimpleAreaChart data={areaChartData} />, <SimpleLineChart data={barChartData} />];
     const items = [
         'Cases vs Vaccines',
-        'PPE Supply vs Demand'
+        'Housing'
     ]
     const descriptions = [
         'The COVID Vaccines administered vs. COVID Cases, per day, since January 2021 in Canada.',
-        'This is a description for the bar chart, please review the data below.'
+        'The average house price per province, from 2014 to 2021, in Canada.'
     ];
 
     useEffect(() => {
@@ -57,7 +57,7 @@ function App() {
             let result = await results.json();
 
             setAreaChartData(result.body['area-chart']);
-            setBarChartData(result.body['bar-chart']);
+            setBarChartData(result.body['line-chart']);
         } catch (error) {
             console.log(error);
         }
