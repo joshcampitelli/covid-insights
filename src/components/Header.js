@@ -39,11 +39,15 @@ const useStyles = makeStyles(() => ({
             css.padding = '0 10px 10px 10px';
             css.fontSize = '16px';
         }
-        
+
         return css;
     }
 }));
 
+/**
+ * Header Component displays Active item & description for the selected Insight
+ * @param props takes the item and description as strings for the current insight.
+ */
 function Header(props) {
     const isDesktop = useMediaQuery('(min-width:600px)');
     const classes = useStyles({ ...props, isDesktop });

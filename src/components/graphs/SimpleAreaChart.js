@@ -9,6 +9,10 @@ const useStyles = makeStyles({
     }
 });
 
+/**
+ * SimpleAreaChart Component displays the ReChart AreaChart with Covid Vaccinations vs Cases.
+ * @param props destructured into { data }, for the array of json data that the chart displays.  
+ */
 const SimpleAreaChart = ({ data }) => {
     const classes = useStyles();
 
@@ -28,12 +32,12 @@ const SimpleAreaChart = ({ data }) => {
                 </defs>
                 <Legend />
                 <XAxis dataKey='date' />
-                <YAxis yAxisId='left' />
-                <YAxis yAxisId='right' orientation='right' />
+                <YAxis yAxisId='left' stroke='#006064' />
+                <YAxis yAxisId='right' orientation='right' stroke='#D41D2E' />
                 <CartesianGrid strokeDasharray='3 3' vertical={false} />
                 <Tooltip />
                 <Area yAxisId='right' type='monotone' dataKey='cases' stroke='#D41D2E' fillOpacity={1} fill='url(#colorCases)' />
-                <Area yAxisId='left'  type='monotone' dataKey='vaccines' stroke='#006064' fillOpacity={1} fill='url(#colorVacc)' />
+                <Area yAxisId='left' type='monotone' dataKey='vaccines' stroke='#006064' fillOpacity={1} fill='url(#colorVacc)' />
             </AreaChart>
         </ResponsiveContainer>
     );
