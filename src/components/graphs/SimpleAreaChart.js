@@ -32,8 +32,8 @@ const SimpleAreaChart = ({ data }) => {
                 </defs>
                 <Legend />
                 <XAxis dataKey='date' />
-                <YAxis yAxisId='left' />
-                <YAxis yAxisId='right' orientation='right' />
+                <YAxis yAxisId='left' stroke='#006064'/>
+                <YAxis yAxisId='right' orientation='right' stroke='#D41D2E'/>
                 <CartesianGrid strokeDasharray='3 3' vertical={false} />
                 <Tooltip />
                 <Area yAxisId='right' type='monotone' dataKey='cases' stroke='#D41D2E' fillOpacity={1} fill='url(#colorCases)' />
