@@ -17,25 +17,25 @@ test('Renders <App /> component', () => {
 describe('Click Next Button', () => {
     it('On click Next', async () => {
         await act(async () => {
-            const { findByText  } = render(<App />)
+            const { findByText } = render(<App />)
             const nextButton = await findByText('Next');
             const header = await findByText('Cases vs Vaccines');
-            
-            expect(header.innerHTML).toContain('Cases vs Vaccines')
+
+            expect(header.innerHTML).toContain('Cases vs Vaccines');
             fireEvent.click(nextButton);
-            expect(header.innerHTML).toContain('PPE Supply vs Demand')
+            expect(header.innerHTML).toContain('Housing');
         });
     });
 
     it('On click Prev', async () => {
         await act(async () => {
-            const { findByText  } = render(<App />)
+            const { findByText } = render(<App />)
             const nextButton = await findByText('Prev');
             const header = await findByText('Cases vs Vaccines');
-            
-            expect(header.innerHTML).toContain('Cases vs Vaccines')
+
+            expect(header.innerHTML).toContain('Cases vs Vaccines');
             fireEvent.click(nextButton);
-            expect(header.innerHTML).toContain('Cases vs Vaccines')
+            expect(header.innerHTML).toContain('Cases vs Vaccines');
         });
     });
 })

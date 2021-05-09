@@ -21,20 +21,20 @@ const SimpleLineChart = ({ data }) => {
             <LineChart width={375} height={250} data={data}
                 margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
                 <Legend />
-                <XAxis dataKey='Year'/>
+                <XAxis dataKey='Year' />
                 <YAxis domain={[150000, 950000]} />
                 <CartesianGrid strokeDasharray='3 3' vertical={false} />
                 <Tooltip cursor={{ fill: '#303030' }} />
-                <Line type='monotone' dataKey='British Columbia' stroke='green' fillOpacity={1} strokeWidth={2}/>
-                <Line type='monotone' dataKey='Ontario' stroke='orange' fillOpacity={1} strokeWidth={2}/>
-                <Line type='monotone' dataKey='Alberta' stroke='red' fillOpacity={1} strokeWidth={2}/>
-                <Line type='monotone' dataKey='Quebec' stroke='indigo' fillOpacity={1} strokeWidth={2}/>
-                <Line type='monotone' dataKey='Manitoba' stroke='magenta' fillOpacity={1} strokeWidth={2}/>
-                <Line type='monotone' dataKey='Saskatchewan' stroke='brown' fillOpacity={1} strokeWidth={2}/>
-                <Line type='monotone' dataKey='Novia Scotia' stroke='purple' fillOpacity={1} strokeWidth={2}/>
-                <Line type='monotone' dataKey='Newfoundland' stroke='blue' fillOpacity={1} strokeWidth={2}/>
-                <Line type='monotone' dataKey='PEI' stroke='forestgreen' fillOpacity={1} strokeWidth={2}/>
-                <Line type='monotone' dataKey='New Brunswick' stroke='cyan' fillOpacity={1} strokeWidth={2}/>
+                <Line type='monotone' dataKey='British Columbia' stroke='green' fillOpacity={1} strokeWidth={2} />
+                <Line type='monotone' dataKey='Ontario' stroke='orange' fillOpacity={1} strokeWidth={2} />
+                <Line type='monotone' dataKey='Alberta' stroke='red' fillOpacity={1} strokeWidth={2} />
+                <Line type='monotone' dataKey='Quebec' stroke='indigo' fillOpacity={1} strokeWidth={2} />
+                <Line type='monotone' dataKey='Manitoba' stroke='magenta' fillOpacity={1} strokeWidth={2} />
+                <Line type='monotone' dataKey='Saskatchewan' stroke='brown' fillOpacity={1} strokeWidth={2} />
+                <Line type='monotone' dataKey='Novia Scotia' stroke='purple' fillOpacity={1} strokeWidth={2} />
+                <Line type='monotone' dataKey='Newfoundland' stroke='blue' fillOpacity={1} strokeWidth={2} />
+                <Line type='monotone' dataKey='PEI' stroke='forestgreen' fillOpacity={1} strokeWidth={2} />
+                <Line type='monotone' dataKey='New Brunswick' stroke='cyan' fillOpacity={1} strokeWidth={2} />
             </LineChart>
         </ResponsiveContainer>
     );

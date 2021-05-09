@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
             css.padding = '0 10px 10px 10px';
             css.fontSize = '16px';
         }
-        
+
         return css;
     }
 }));
