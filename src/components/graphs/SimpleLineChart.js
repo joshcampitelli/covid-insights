@@ -10,7 +10,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * SimpleLineChart Component displays the ReChart bar chart with PPE Supply vs Demand data.
+ * SimpleLineChart Component displays the ReChart line chart with Housing prices since 2014 for each province.
  * @param props destructured into { data }, for the array of json data that the chart displays.  
  */
 const SimpleLineChart = ({ data }) => {
